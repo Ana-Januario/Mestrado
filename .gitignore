@@ -3,13 +3,8 @@
 .RData
 .Rproj.user
 .Rapp.history
-*.Rproj.user/
-
-# RStudio files
-.Rproj.user/
 
 # Session Data files
-.RData
 .RDataTmp
 
 # User-specific files
@@ -23,9 +18,6 @@
 
 # Output files from R CMD check
 /*.Rcheck/
-
-# RStudio files
-.Rproj.user/
 
 # produced vignettes
 vignettes/*.html
