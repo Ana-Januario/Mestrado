@@ -14,70 +14,70 @@ shapiro.test(dados$liquido_recria)
 
 ##MODELO SIMPLES####
 modlucro1<-lm(dados$liquido_recria~dados$peso_ent)
-summary(modlucro1) #R�adj=0,39
+summary(modlucro1) #R2adj=0,39
 modlucro1$coefficients
 #Mantendo tudo constante, quando aumento em 1 Kg o peso do animal na entrada, o liquido da recria aumenta em 1,31 euros
 plot(dados$liquido_recria, dados$peso_ent, abline(reg=modlucro1,col="blue"),col="red")
 
 modlucro2<-lm(dados$liquido_recria~dados$Idadeent_meses)
-summary(modlucro2) #R�adj=0,10
+summary(modlucro2) #R2adj=0,10
 modlucro2$coefficients
 #Mantendo tudo constante, quando aumento em 1 mes da idade na entrada, o liquido da recria aumenta em 19,30 euros
 plot(dados$liquido_recria, dados$Idadeent_meses, abline(reg=modlucro2,col="blue"),col="red")
 
 
 modlucro3<-lm(dados$liquido_recria~dados$P210)
-summary(modlucro3) #R�adj=0.1541
+summary(modlucro3) #R2adj=0.1541
 modlucro3$coefficients
 #Mantendo tudo constante, quando aumento em 1 unidade on P210, o liquido da recria aumenta em 1,19 euros
 
 modlucro4<-lm(dados$liquido_recria~dados$Pai_p210)
-summary(modlucro4) #R�adj=0,00
-#a vari�vel n�o apresentou significancia
+summary(modlucro4) #R2adj=0,00
+#a variavel não apresentou significancia
 
 modlucro5<-lm(dados$liquido_recria~dados$mae_p210)
-summary(modlucro5) #R�adj=0,01
-#n�o apresentou significancia
+summary(modlucro5) #R2adj=0,01
+#nao apresentou significancia
 
 modlucro6<-lm(dados$liquido_recria~dados$VG_capacidade_maternal)
-summary(modlucro6) #R�adj=0,01
-#n�o apresentou significancia
+summary(modlucro6) #R2adj=0,01
+#nao apresentou significancia
 
 modlucro7<-lm(dados$liquido_recria~dados$VG_cap_crescimento)
-summary(modlucro7) #R�adj=0,02
+summary(modlucro7) #R2adj=0,02
 modlucro7$coefficients
 #Mantendo tudo constante, quando aumento em 1 unidade o VG da cap crescimento, o liquido da recria aumenta em 1,25 euros
 plot(dados$liquido_recria, dados$VG_cap_crescimento, abline(reg=modlucro7,col="blue"),col="red", xlab="Liquido recria", ylab="Valor gen�tico")
 
 modlucro8<-lm(dados$liquido_recria~dados$VG_gmd_estacao)
-summary(modlucro8) #R�adj=0,0000
-#n�o apresentou significancia
+summary(modlucro8) #R2adj=0,0000
+#nao apresentou significancia
 
 modlucro9<-lm(dados$liquido_recria~dados$VG_carcaca_dia_idade)
-summary(modlucro9) #R�adj=0,08
+summary(modlucro9) #R2adj=0,08
 modlucro9$coefficients
 #Mantendo tudo constante, quando aumento em 1 unidade o VG da carc dia idade, o liquido da recria aumenta em 1,08 euros
 plot(dados$liquido_recria, dados$VG_carcaca_dia_idade, abline(reg=modlucro9,col="blue"),col="red")
 
 
 modlucro10<-lm(dados$liquido_recria~dados$VG_Intervalo_Entre_partos)
-summary(modlucro10) #R�adj=0,003
+summary(modlucro10) #R2adj=0,003
 modlucro10$coefficients
-#n�o apresentou significancia
+#nao apresentou significancia
 
 modlucro11<-lm(dados$liquido_recria~dados$VG_indice_conversao)
-summary(modlucro11) #R�adj=0,004
+summary(modlucro11) #R2adj=0,004
 modlucro11$coefficients
 #Mantendo tudo constante, quando aumento em 1 unidade o VG do indice de conversao, o liquido da recria aumenta reduz em 36 euros
 plot(dados$liquido_recria, dados$VG_indice_conversao, abline(reg=modlucro11,col="blue"),col="red",xlab="Liquido recria", ylab="Valor gen�tico")
 
 modlucro12<-lm(dados$liquido_recria~dados$VG_longevidade_produtiva)
-summary(modlucro12) #R�adj=0,001
-#n�o apresentou significancia
+summary(modlucro12) #R2adj=0,001
+#nao apresentou significancia
 
 modlucro13<-lm(dados$liquido_recria~dados$VG_consumo_alim_residual)
-summary(modlucro13) #R�adj=0,001
-#n�o apresentou significancia
+summary(modlucro13) #R2adj=0,001
+#nao apresentou significancia
 
 modlucro14<-lm(dados$liquido_recria~dados$Dest_abate)
 summary(modlucro14)
@@ -87,50 +87,48 @@ modlucroM1<-lm(liquido_recria~peso_ent+Idadeent_meses+P210+VG_cap_crescimento+VG
 anova(modlucroM1)
 summary(modlucroM1)
 
-#novo modelo RLM vou retirar idade a entrada, pois j� era necess�rio retirar
+#novo modelo RLM vou retirar idade a entrada, pois já era necessario retirar
 #pu fica com o peso oiu fica com a idade
-#e o VG do indice de convers�o alimentar, pois n�o apresentou significancia
+#e o VG do indice de conversão alimentar, pois não apresentou significancia
 modlucroM2<-lm(liquido_recria~peso_ent+P210+VG_cap_crescimento+VG_carcaca_dia_idade+Dest_abate, data = dados)
 summary(modlucroM2)
 anova(modlucroM2)
-#Como P210 n�o apresentou significancia na anova ser� realizado um terceiro modelo sem P210
-
+#Como P210 não apresentou significancia na anova será realizado um terceiro modelo sem P210
 modlucroM3<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+Dest_abate, data = dados)
 summary(modlucroM3)
 anova(modlucroM3)
 #Esse modelo se mostrou bom
 
-#Verificando as vari�veis que n�o apresentaram significancia no RLM simples
+#Verificando as variáveis que não apresentaram significancia no RLM simples
 modlucroM3a<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+Dest_abate+Pai_p210, data = dados)
 summary(modlucroM3a)
 anova(modlucroM3a)
-#P210_pai n�o � significativo
-
+#P210_pai não é significativo
 modlucroM3b<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+mae_p210, data = dados)
 summary(modlucroM3b)
 anova(modlucroM3b)
-#P210_mae n�o � significativo
+#P210_mae não é significativo
 
 modlucroM3c<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_capacidade_maternal, data = dados)
 summary(modlucroM3c)
 anova(modlucroM3c)
-#Vg capacidade maternal, n�o � significativo
+#VG capacidade maternal, não é significativo
 
 modlucroM3d<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_gmd_estacao, data = dados)
 summary(modlucroM3d)
 anova(modlucroM3d)
-#vg gmd em teste de esta��o n�o � significativo
+#VG gmd em teste de estação não é significativo
 
 modlucroM3e<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos, data = dados)
 summary(modlucroM3e)
 anova(modlucroM3e)
-#VG intervalo entre partos n�o � significativo
+#VG intervalo entre partos não é significativo
 
 
 modlucroM3g<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_consumo_alim_residual, data = dados)
 summary(modlucroM3g)
 anova(modlucroM3g)
-#n�o se apresentou significativo
+#não se apresentou significativo
 
 
 
@@ -141,7 +139,7 @@ coef(modlucroM3f)
 # No modelo final o destino de abate se apresentou significativo
 
 ############################
-#Verificando as intera��es
+#Verificando as interações
 modlucroM3fint1<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_longevidade_produtiva+Dest_abate+peso_ent*VG_cap_crescimento, data = dados)
 summary(modlucroM3fint1)
 anova(modlucroM3fint1)
@@ -161,7 +159,7 @@ anova(modlucroM3fint3.1)
 modlucroM3fint4<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_longevidade_produtiva+Dest_abate+VG_cap_crescimento*VG_carcaca_dia_idade, data = dados)
 summary(modlucroM3fint4)
 anova(modlucroM3fint4)
-#VG cap crescimento e VG carca�a por dia de idade apresentaram intera��o com significancia
+#VG cap crescimento e VG carcaça por dia de idade apresentaram interação com significancia
 
 modlucroM3fint5<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_longevidade_produtiva+Dest_abate+VG_cap_crescimento*VG_longevidade_produtiva, data = dados)
 summary(modlucroM3fint5)
@@ -185,18 +183,18 @@ modlucroM3fint8<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_id
 summary(modlucroM3fint8)
 anova(modlucroM3fint8)
 
-#Duas intera��es foram significativas
+#Duas interações foram significativas
 #Entre = VG_cap_crescimento*Dest_abate
 #VG_cap_crescimento*VG_carcaca_dia_idade
 
 ########################################################################
-#Analise dos res�duos
+#Analise dos resíduos
 resid<-resid(modlucroM3fint8) # residuos do Modelo multivariado
 pred<-fitted(modlucroM3fint8) # Valores ajustados pelo modelo
 resid.std <- rstandard(modlucroM3fint8)
 
 library(nortest)
-lillie.test(resid) #n�o admite-se a normalidade
+lillie.test(resid) #não admite-se a normalidade
 shapiro.test(resid)
 qqnorm(resid)
 qqline(resid) #muitos pontos outliers
@@ -206,7 +204,7 @@ hist(resid)  # aparentam ter distr Normal
 # Avaliar Achatamento
 library(moments)
 # teste para a curtose
-anscombe.test(resid) #os res�duos n�o s�o mesocurticos
+anscombe.test(resid) #os resíduos não são mesocurticos
 # teste para a Assimetria
 agostino.test(resid)  #Memso considerando a simetria, falha a normalidade
 
@@ -215,28 +213,28 @@ library(car)
 # teste durbin.Watson 
 # de 1.5 < D <2.5 sao independentes
 durbinWatsonTest(modlucroM3fint8)
-#N�o se pode admitir independencia dos res�duos
+#Não se pode admitir independencia dos resíduos
 
 install.packages("lmtest")
 library(lmtest)
 # Breusch- Pagan test
 bptest(modlucroM3fint8) #p-value = 1.672e-15
-#N�o se pode assumir a homocedasticidade
+#Não se pode assumir a homocedasticidade
 
 #Existencia de Colinearidade/Multicolinearidade
 vif(modlucroM3fint8) # variance inflation factors 
 sqrt(vif(modlucroM3fint8)) > 2 # Se verdade existe multicolinearidade
-#n�o apresenta problema de multicolinearidade
-#Mas n�o passa na normalidade
+#não apresenta problema de multicolinearidade
+#Mas não passa na normalidade
 
-#tranforma��es
+#transformações
 y<-log(dados$liquido_recria)
 hist(y)
 modlucroM3fint8a<-lm(y~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_longevidade_produtiva+Dest_abate+VG_cap_crescimento*VG_carcaca_dia_idade+VG_cap_crescimento*Dest_abate, data = dados)
 #summary(modlucroM3fint8a)
 #anova(modlucroM3fint8a)
 #resida<-resid(modlucroM3fint8a)
-#lillie.test(resida) #n�o passou na normalidade
+#lillie.test(resida) #não passou na normalidade
 
 y<-sqrt(dados$liquido_recria)
 hist(y)
@@ -254,7 +252,7 @@ modlucroM3fint8c<-lm(y~peso_ent+VG_cap_crescimento+VG_carcaca_dia_idade+VG_longe
 #residc<-resid(modlucroM3fint8c)
 #lillie.test(residc)
 
-#nenhuma transforma��o se mostrou valida para tornar os res�duos normais
+#nenhuma transformação se mostrou valida para tornar os resíduos normais
 
 ################################################################
 ################################################################
@@ -270,42 +268,41 @@ summary(modlucrototal)
 modlucroM6<-lm(liquido_recria~Idadeent_meses+P210+VG_cap_crescimento+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Dest_abate, data = dados)
 summary(modlucroM6)
 anova(modlucroM6)
-#O destino de abate e a capacidade de crescimento n�o s�o significativos aqui
+#O destino de abate e a capacidade de crescimento não são significativos aqui
 
 modlucroM6a<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade, data = dados)
 summary(modlucroM6a)
 anova(modlucroM6a)
 
-#Verifica��o das intera��es
+#Verificação das interações
 modlucroM7<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Idadeent_meses*P210, data = dados)
 summary(modlucroM7)
 anova(modlucroM7)
-#a idade a entrada e o P210 apresentam intera��o significativa
-
+#a idade a entrada e o P210 apresentam interação significativa
 modlucroM8<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Idadeent_meses*P210+Idadeent_meses*VG_gmd_estacao, data = dados)
 summary(modlucroM8)
 anova(modlucroM8)
-#A idade a entrada e o VG GMD esta��o n�o s�o uma intera��o significativa
+#A idade a entrada e o VG GMD estão não são uma interação significativa
 
 modlucroM9<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Idadeent_meses*P210+Idadeent_meses*VG_Intervalo_Entre_partos, data = dados)
 summary(modlucroM9)
 anova(modlucroM9)
-# a idade a entrada e o VG intervalo entre partos tb n�o apresentam intera��o significativa
+# a idade a entrada e o VG intervalo entre partos tb não apresentam interação significativa
 
 modlucroM10<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Idadeent_meses*P210+Idadeent_meses*VG_carcaca_dia_idade, data = dados)
 summary(modlucroM10)
 anova(modlucroM10)
-#Idade a entrada e o VG_carcaca_dia_idade apresentam intera��o significativa
+#Idade a entrada e o VG_carcaca_dia_idade apresentam interação significativa
 
 modlucroM11<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Idadeent_meses*P210+Idadeent_meses*VG_carcaca_dia_idade+P210*VG_gmd_estacao, data = dados)
 summary(modlucroM11)
 anova(modlucroM11)
-#P210 e VG GMD esta�ao � significativo
+#P210 e VG GMD estão é significativo
 
 modlucroM12<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Idadeent_meses*P210+Idadeent_meses*VG_carcaca_dia_idade+P210*VG_gmd_estacao+P210*VG_Intervalo_Entre_partos, data = dados)
 summary(modlucroM12)
 anova(modlucroM12)
-#P210 e VG_Intervalo_Entre_partos n�o tem significancia
+#P210 e VG_Intervalo_Entre_partos não tem significancia
 
 modlucroM13<-lm(liquido_recria~Idadeent_meses+P210+VG_gmd_estacao+VG_Intervalo_Entre_partos+VG_carcaca_dia_idade+Idadeent_meses*P210+Idadeent_meses*VG_carcaca_dia_idade+P210*VG_gmd_estacao+P210*VG_carcaca_dia_idade, data = dados)
 summary(modlucroM13)
@@ -352,13 +349,13 @@ vif(modlucroM15) # variance inflation factors
 sqrt(vif(modlucroM15)) > 2 # Se verdade existe multicolinearidade
 #Apresenta problema de multicolinearidade
 
-#APESAR DE PASSAR NA NORMALIDADE, N�O PASSA NOS DEMAIS PRESSUPOSTOS
+#APESAR DE PASSAR NA NORMALIDADE, NÃO PASSA NOS DEMAIS PRESSUPOSTOS
 
 
-#VERIFICA��O DE OUTLIERS
+#VERIFICAÇÃO DE OUTLIERS
 # Existencia de Outliers
 ####  Outliers:
-plot(resid.std, ylab = "res�duos standartizados", main = "An�lise dos res�duos")
+plot(resid.std, ylab = "resíduos standartizados", main = "Análise dos resíduos")
 identify(resid.std)
 plot(pred,resid)
 
@@ -374,7 +371,7 @@ pvalue[pvalue<0.05]
 #### Valores Influentes
 lev<-hatvalues(modlucroM3fint8)
 lev
-#como s�o muitos valores influentes, preferiu-se tentar retirar apenas os animais a 1% de significancia
+#como são muitos valores influentes, preferiu-se tentar retirar apenas os animais a 1% de significancia
 names(lev)<-1:length(lev)
 plot(pred,lev,abline(h=0.2))
 identify(pred,lev)
@@ -386,7 +383,7 @@ plot(dcook,ylim=c(0,0.8))
 abline(h=1.0,col="red")
 identify(dcook)
 #nenhum ultrapassa o limite sugerido pela distancia de cooks
-#ser� retirado os animais que apresentaram-se outliers com significancia a 1%
+#será retirado os animais que apresentaram-se outliers com significancia a 1%
 dados2<-dados[-c(9,14,20,21,26,30,37,38,42,45,46,49,58,69,70,77,79,82,90,97,100,101,124,127,129,132,134,145,146,162,171,173,187,194,199,206,211,231,237,270,284,296,335,355,462,547,553,672,716),]
 dados[14,]
 dados[38,]
@@ -406,7 +403,7 @@ modlucroM3fint8.3<-lm(liquido_recria~peso_ent+VG_cap_crescimento+VG_carcaca_dia_
 summary(modlucroM3fint8.3)
 anova(modlucroM3fint8.3)
 
-#Analise dos res�duos
+#Analise dos resíduos
 resid.3<-resid(modlucroM3fint8.3) 
 pred.3<-fitted(modlucroM3fint8.3)
 resid.std.3<- rstandard(modlucroM3fint8.3)
@@ -423,7 +420,7 @@ xajust<-seq(min(resid.3, na.rm=T),
 yajust<-dnorm(xajust,
               mean=mean(resid.3,na.rm=T),
               sd=sd(resid.3,na.rm=T))
-hist(resid.3, freq = F, main = "Histograma dos res�duos do modelo", xlab = "Res�duos", ylab = "densidade")
+hist(resid.3, freq = F, main = "Histograma dos resíduos do modelo", xlab = "Resíduos", ylab = "densidade")
 lines(xajust, yajust, col="red", lwd=2)
 # Avaliar Achatamento
 
@@ -438,11 +435,11 @@ install.packages("lmtest")
 library(lmtest)
 # Breusch- Pagan test
 bptest(modlucroM3fint8.3) 
-#N�o se pode assumir a homocedasticidade
+#Não se pode assumir a homocedasticidade
 
 #Existencia de Colinearidade/Multicolinearidade
 vif(modlucroM3fint8.3) # variance inflation factors 
 sqrt(vif(modlucroM3fint8.3)) > 2 # Se verdade existe multicolinearidade
-#n�o apresenta problema de multicolinearidade
+#não apresenta problema de multicolinearidade
 
-##############Verificando se a vari�vel destino de abate se apresenta significativa
+##############Verificando se a variável destino de abate se apresenta significativa

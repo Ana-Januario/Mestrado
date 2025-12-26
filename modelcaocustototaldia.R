@@ -65,11 +65,11 @@ summary(modcusto7) #R2adj=0,007
 #significancia a 1%
 
 modcusto8<-lm(dados$custototal.dia~dados$VG_gmd_estacao)
-summary(modcusto8) #R?adj=0,0000
+summary(modcusto8) #R2adj=0,0000
 #n?o apresentou significancia
 
 modcusto9<-lm(dados$custototal.dia~dados$VG_carcaca_dia_idade)
-summary(modcusto9) #R?adj=0,03
+summary(modcusto9) #R2adj=0,03
 #Mantendo tudo constante, quando aumento em 1 unidade o VG da carc dia idade, o custo por dia aumenta em 0,005euros
 
 modcusto10<-lm(dados$custototal.dia~dados$VG_Intervalo_Entre_partos)
@@ -85,7 +85,7 @@ summary(modcusto12) #R2adj=0,001
 #nao apresentou significancia
 
 modcusto13<-lm(dados$custototal.dia~dados$VG_consumo_alim_residual)
-summary(modcusto13) #R?adj=0,001
+summary(modcusto13) #R2adj=0,001
 #nao apresentou significancia
 
 modcusto14<-lm(dados$custototal.dia~dados$GMD)
@@ -148,7 +148,7 @@ summary(modcustodiaI3)
 
 modcustodiaI4<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao+peso_ent*VG_Intervalo_Entre_partos, data = dados)
 summary(modcustodiaI4)
-#embora seja muito signif altera em apenas 1% o R?
+#embora seja muito signif altera em apenas 1% o R2
 
 modcustodiaI5<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao+peso_ent*VG_indice_conversao, data = dados)
 summary(modcustodiaI5)
@@ -164,18 +164,17 @@ summary(modcustodiaI7)
 
 modcustodiaI8<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao+VG_capacidade_maternal*VG_carcaca_dia_idade, data = dados)
 summary(modcustodiaI8)
-#n?o
+#nao
 
 modcustodiaI9<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao+VG_capacidade_maternal*VG_Intervalo_Entre_partos, data = dados)
-summary(modcustodiaI9)#n?o
+summary(modcustodiaI9)#nao
 
 modcustodiaI10<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao+VG_capacidade_maternal*VG_indice_conversao, data = dados)
-summary(modcustodiaI10)#n?o
+summary(modcustodiaI10)#nao
 
 modcustodiaI11<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao+VG_cap_crescimento*VG_carcaca_dia_idade, data = dados)
 summary(modcustodiaI11)
-#n?o
-
+#nao
 modcustodiaI12<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao+VG_cap_crescimento*VG_Intervalo_Entre_partos, data = dados)
 summary(modcustodiaI12) #nao
 
@@ -198,11 +197,11 @@ summary(modcustodiaI16)
 
 #modelo sem interacao selecionado
 plot(modcustodiaM10) 
-#? possivel notar alguns outliers: 2,3,348
+#e possivel notar alguns outliers: 2,3,348
 
 ####ANALISE DOS RESIDUOS DO MODELO
 
-#Analise dos res?duos
+#Analise dos resíduos
 resid<-resid(modcustodiaM10) # residuos do Modelo multivariado
 pred<-fitted(modcustodiaM10) # Valores ajustados pelo modelo
 resid.std <- rstandard(modcustodiaM10)
@@ -284,12 +283,12 @@ identify(dcook)
 #sera retirado os animais que apresentaram-se outliers na analise grafica
 dados2<-dados[-c(2,3,263,264,265,266,267,268,333,338,348,363,710),]
 plot(dados2$custototal.dia)
-hist(dados2$custototal.dia,main = "Histograma custo total/dia na engorda sem outliers", xlab = "Custo total/dia", ylab = "Frequ?ncia") #apresentou um histogram mais bem comportado
+hist(dados2$custototal.dia,main = "Histograma custo total/dia na engorda sem outliers", xlab = "Custo total/dia", ylab = "Frequncia") #apresentou um histogram mais bem comportado
 
 modcustodiaM10<-lm(custototal.dia~peso_ent+VG_capacidade_maternal+VG_cap_crescimento+VG_carcaca_dia_idade+VG_Intervalo_Entre_partos+VG_indice_conversao, data = dados2)
 summary(modcustodiaM10)
 
-#Analise dos res?duos
+#Analise dos residuos
 resid<-resid(modcustodiaM10) # residuos do Modelo multivariado
 pred<-fitted(modcustodiaM10) # Valores ajustados pelo modelo
 resid.std <- rstandard(modcustodiaM10)
