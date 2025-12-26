@@ -22,7 +22,7 @@ All analyses were performed using **R**.
 ## Requirements
 
 - R (≥ 4.0)
-- Packages: `tidyverse`, `ggplot2`, `dplyr`, `readr`, `car`, `MASS`, and `glmnet`
+- Packages: `tidyverse`, `ggplot2`, `dplyr`, `readr`, `car`, `MASS`, and others
 
 ## Author
 
