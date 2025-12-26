@@ -1,0 +1,100 @@
+---
+title: "Analysis Report Template"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: united
+    code_folding: hide
+  pdf_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+# Load required packages
+library(tidyverse)
+library(knitr)
+```
+
+# Introduction
+
+Provide an overview of your analysis, research questions, and objectives.
+
+# Data
+
+Describe your dataset, including:
+- Data source
+- Variables of interest
+- Sample size
+- Collection methods
+
+```{r load-data, echo=TRUE}
+# Load your data
+# data <- read.csv("../data/raw/your_dataset.csv")
+```
+
+# Exploratory Data Analysis
+
+Present descriptive statistics and initial observations.
+
+```{r eda}
+# Summary statistics
+# summary(data)
+
+# Example visualization
+# ggplot(data, aes(x = variable)) +
+#   geom_histogram() +
+#   theme_minimal()
+```
+
+# Methods
+
+Describe your analytical approach and statistical methods.
+
+## Data Preprocessing
+
+Explain any data cleaning or transformation steps.
+
+## Statistical Analysis
+
+Describe the statistical models or tests used.
+
+# Results
+
+Present your findings with tables and figures.
+
+```{r analysis}
+# Your analysis code here
+```
+
+# Discussion
+
+Interpret your results and discuss their implications.
+
+## Key Findings
+
+Summarize the main results.
+
+## Limitations
+
+Discuss any limitations of the analysis.
+
+# Conclusions
+
+Provide concluding remarks and potential future directions.
+
+# References
+
+List any references or citations.
+
+---
+
+# Session Information
+
+```{r session-info}
+sessionInfo()
+```
