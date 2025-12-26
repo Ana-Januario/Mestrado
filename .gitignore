@@ -1,0 +1,9 @@
+# Dados brutos
+*.csv
+*.CSV
+*.xlsx
+*.pdf
+
+# Ficheiros de sessão R
+.Rhistory
+.RData
